@@ -13,11 +13,17 @@ public class Main {
         System.out.println("5 - Consulter l'historique des operation : ");
         System.out.println("Quelle est votre choix ? ");
 
+
+        ClassClient newClient2 = new ClassClient("Cisse",
+                "Khadim","40 av.lyon",
+                69009, "LYON",
+                1000) ;
         //Je stock ma variable pour le choix de l'user
         int Choix = scanner.nextInt();
         switch (Choix) {
             case 1:
                 System.out.println("CREATION COMPTE BANCAIRE :");
+
                 System.out.println("Quelle est votre nom ? ");
                 String nom = scanner.nextLine();
 
@@ -26,12 +32,11 @@ public class Main {
 
                 System.out.println("Quelle est votre adresse ? ");
                 String adresse = scanner.nextLine();
-                //test
-                System.out.println("votre adresse est : " + adresse);
+
 
 
                 System.out.println("Quelle est votre Code Postal ? ");
-                int CodePostal = scanner.nextInt();
+                int codePostal = scanner.nextInt();
 
 
                 System.out.println("Quelle est votre ville ? ");
@@ -40,7 +45,10 @@ public class Main {
                 System.out.println("À quelle solde vous voulez démarrer ?");
                 double solde = scanner.nextInt();
 
-            break;
+                //Je declare mon constructeur
+                ClassClient newClient = new ClassClient(nom,prenom, adresse, codePostal, ville, solde ) ;
+
+                break;
             case 2:
                 System.out.println("Choix numero " + Choix);
             break;
@@ -48,8 +56,15 @@ public class Main {
                 System.out.println("Choix numero " + Choix);
             break;
             case 4:
-                System.out.println("Choix numero " + Choix);
-            break;
+                System.out.println("Vous avez :" + newClient2.solde);
+
+                System.out.println("Vous voulez retirer quelle somme ?");
+                double retirer = scanner.nextDouble();
+
+                newClient2.prelevement(retirer);
+
+
+                break;
             case 5:
                 System.out.println("Choix numero " + Choix);
             break;
