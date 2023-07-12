@@ -8,20 +8,17 @@ Consultez la Javadoc :
 
 public class Main {
     public static void main(String[]args){
-        //Mon premier article
-        Article psg = new Article();
-        psg.reference = ("ref0001");
-        psg.designation = ("T-shirt PSG");
-        psg.price = (59.99);
+        //Je crée mon article et j'appele mon constructeur
+
+        Article psg = new Article("ref0001","T-shirt PSG", 59.99);
+
         System.out.println("Le " + psg.designation + " avec la reference " + psg.reference +  " coûte "+ psg.price );
 
-    //Mon dexième article
-        Article inter = new Article();
-        inter.reference = ("ref0002");
-        inter.designation = ("T-shirt INTER");
-        inter.price = (100);
+    //Je crée mon article et j'appele mon constructeur
+        Article inter = new Article("ref0002","T-shirt INTER", 100);
+
         System.out.println("Le " + inter.designation + " avec la reference " + inter.reference +  " coûte "+ inter.price );
 
-        inter.Soldes();
+       inter.Soldes(inter.designation);
     }
 }

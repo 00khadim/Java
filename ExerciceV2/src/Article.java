@@ -5,15 +5,22 @@ public class Article {
     public String designation;
     public double price;
 
-    void Article(){
-        System.out.println(reference + designation + price + "test");
+
+// Je declare mon constructeur
+    public Article(String reference, String designation, double price){
+        this.reference = reference;
+        this.designation = designation;
+        this.price = price;
 
     }
-    //Constructeur ??
-    void Soldes(){
+
+    void Soldes(String designation){
+        this.designation = designation;
+        this.price = price;
         double priceSolde = price*0.80;
-        System.out.println("SOLDE 80% l'article passe à "+ priceSolde );
+        System.out.println("SOLDE 80% l'article " + designation + " passe à "+ priceSolde );
 
 
     }
+
 }
