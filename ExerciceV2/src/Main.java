@@ -19,6 +19,6 @@ public class Main {
 
         System.out.println("Le " + inter.designation + " avec la reference " + inter.reference +  " coûte "+ inter.price );
 
-       inter.Soldes(inter.designation);
+       inter.soldes(inter.designation);
     }
 }
