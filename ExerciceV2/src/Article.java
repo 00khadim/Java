@@ -11,6 +11,9 @@ public class Article {
     }
     //Constructeur ??
     void Soldes(){
-        
+        double priceSolde = price*0.80;
+        System.out.println("SOLDE 80% l'article passe à "+ priceSolde );
+
+
     }
 }

@@ -15,11 +15,13 @@ public class Main {
         psg.price = (59.99);
         System.out.println("Le " + psg.designation + " avec la reference " + psg.reference +  " coûte "+ psg.price );
 
-    //Mon dexieme article
+    //Mon dexième article
         Article inter = new Article();
         inter.reference = ("ref0002");
         inter.designation = ("T-shirt INTER");
-        inter.price = (59.99);
+        inter.price = (100);
         System.out.println("Le " + inter.designation + " avec la reference " + inter.reference +  " coûte "+ inter.price );
+
+        inter.Soldes();
     }
 }
