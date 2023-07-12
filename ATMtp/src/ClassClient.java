@@ -67,14 +67,19 @@ public class ClassClient {
     public double getRetirer() {
         return retirer;
     }
+    void deposer (double entree){
+        double nouveauSolde = this.solde + entree;
+        setSolde(nouveauSolde);
+        System.out.println("Vous avez deposer " + entree + "€ nouveau solde est de : " + solde + "€");
 
+    }
     void prelevement(double retirer ){
 
 
         if (this.solde >= retirer) {
             double reste = (this.solde - retirer);
             setSolde(reste);
-            System.out.println("Votre nouveau solde est de : " + solde);
+            System.out.println("Votre nouveau solde est de : " + solde + "€");
 
         }
         else {

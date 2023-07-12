@@ -6,11 +6,11 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Chosir l'operation que vous voulait realiser : ");
-        System.out.println("1 - Compte bancaire : ");
-        System.out.println("2 - Consulter le solde : ");
-        System.out.println("3 - Déposer de l'argent : ");
-        System.out.println("4 - Retirer de l'argent : ");
-        System.out.println("5 - Consulter l'historique des operation : ");
+        System.out.println("1 - Compte bancaire ");
+        System.out.println("2 - Consulter le solde ");
+        System.out.println("3 - Déposer de l'argent ");
+        System.out.println("4 - Retirer de l'argent ");
+        System.out.println("5 - Consulter l'historique des operation ");
         System.out.println("Quelle est votre choix ? ");
 
 
@@ -42,21 +42,28 @@ public class Main {
                 System.out.println("Quelle est votre ville ? ");
                 String ville = scanner.nextLine();
 
-                System.out.println("À quelle solde vous voulez démarrer ?");
+                System.out.println("À quelle solde vous voulez démarrer ? ");
                 double solde = scanner.nextInt();
 
                 //Je declare mon constructeur
                 ClassClient newClient = new ClassClient(nom,prenom, adresse, codePostal, ville, solde ) ;
+                System.out.println(nom + "TEST nom");
+                System.out.println(prenom + "test prenom");
 
                 break;
             case 2:
                 System.out.println("Choix numero " + Choix);
             break;
             case 3:
-                System.out.println("Choix numero " + Choix);
+                System.out.println("Vous avez : " + newClient2.solde);
+                System.out.println("Quelle est la somme que vous  voulez deposer ? ");
+                double entree = scanner.nextDouble();
+                newClient2.deposer(entree);
+
+
             break;
             case 4:
-                System.out.println("Vous avez :" + newClient2.solde);
+                System.out.println("Vous avez : " + newClient2.solde);
 
                 System.out.println("Vous voulez retirer quelle somme ?");
                 double retirer = scanner.nextDouble();
