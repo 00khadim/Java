@@ -95,7 +95,7 @@ public class ClassClient {
         }
         else {
             System.out.println("IL vous reste " + solde + "€");
-            System.out.println("Vous êtes en negatif, vous devez nous rembourser : " + solde);
+            System.out.println("Vous êtes en negatif, vous devez nous rembourser : " );
 
 
 

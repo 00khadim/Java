@@ -2,89 +2,132 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //C'est pour lire l'entrée
+        // C'est pour lire l'entrée
         Scanner scanner = new Scanner(System.in);
-        int Choix = 0;
-        while (Choix <1 || Choix > 5){
+        int choix = 0;
+        ClassClient newClient2 = null;
 
-        System.out.println("Chosir l'operation que vous voulait realiser : ");
-        System.out.println("1 - Compte bancaire ");
-        System.out.println("2 - Consulter le solde ");
-        System.out.println("3 - Déposer de l'argent ");
-        System.out.println("4 - Retirer de l'argent ");
-        System.out.println("5 - Consulter l'historique des operation ");
-        System.out.println("Quelle est votre choix ? ");
+        while (choix != 7) {
+            System.out.println("Choisir l'opération que vous souhaitez réaliser : ");
+            System.out.println("1 - Créer un compte bancaire ");
+            System.out.println("2 - Consulter le solde ");
+            System.out.println("3 - Déposer de l'argent ");
+            System.out.println("4 - Retirer de l'argent ");
+            System.out.println("5 - Consulter l'historique des opérations ");
+            System.out.println("6 - Modifier les informations du compte client ");
+            System.out.println("7 - Sortir ");
+            System.out.println();
+            System.out.println("Quel est votre choix ? ");
 
+            choix = scanner.nextInt();
+            scanner.nextLine(); // Pour consommer le retour à la ligne
 
-        ClassClient newClient2 = new ClassClient("Cisse",
-                "Khadim","40 av.lyon",
-                69009, "LYON",
-                1000) ;
-        //Je stock ma variable pour le choix de l'user
-        Choix = scanner.nextInt();
+            switch (choix) {
+                case 1:
+                    System.out.println("CRÉATION COMPTE BANCAIRE :");
 
-        switch (Choix) {
-            case 1:
-                System.out.println("CREATION COMPTE BANCAIRE :");
+                    System.out.println("Quel est votre nom ? ");
+                    String nom = scanner.nextLine();
 
-                System.out.println("Quelle est votre nom ? ");
-                String nom = scanner.nextLine();
+                    System.out.println("Quel est votre prénom ? ");
+                    String prenom = scanner.nextLine();
 
-                System.out.println("Quelle est votre prenom ? ");
-                String prenom = scanner.nextLine();
+                    System.out.println("Quelle est votre adresse ? ");
+                    String adresse = scanner.nextLine();
 
-                System.out.println("Quelle est votre adresse ? ");
-                String adresse = scanner.nextLine();
+                    System.out.println("Quel est votre Code Postal ? ");
+                    int codePostal = scanner.nextInt();
+                    scanner.nextLine(); // Pour consommer le retour à la ligne
 
+                    System.out.println("Quelle est votre ville ? ");
+                    String ville = scanner.nextLine();
 
+                    System.out.println("Avec quel solde voulez-vous démarrer ? ");
+                    double solde = scanner.nextDouble();
+                    scanner.nextLine(); // Pour consommer le retour à la ligne
 
-                System.out.println("Quelle est votre Code Postal ? ");
-                int codePostal = scanner.nextInt();
+                    newClient2 = new ClassClient(nom, prenom, adresse, codePostal, ville, solde);
+                    System.out.println("Compte créé avec succès.");
+                    break;
 
+                case 2:
+                    if (newClient2 != null) {
+                        System.out.println("Votre solde actuel est de : " + newClient2.getSolde());
+                    } else {
+                        System.out.println("Aucun compte n'a été créé.");
+                    }
+                    break;
 
-                System.out.println("Quelle est votre ville ? ");
-                String ville = scanner.nextLine();
+                case 3:
+                    if (newClient2 != null) {
+                        System.out.println("Vous avez actuellement : " + newClient2.getSolde());
+                        System.out.println("Quelle somme voulez-vous déposer ? ");
+                        double montantDepot = scanner.nextDouble();
+                        scanner.nextLine(); // Pour consommer le retour à la ligne
+                        newClient2.deposer(montantDepot);
+                        System.out.println("Dépôt effectué avec succès.");
+                    } else {
+                        System.out.println("Aucun compte n'a été créé.");
+                    }
+                    break;
 
-                System.out.println("À quelle solde vous voulez démarrer ? ");
-                double solde = scanner.nextInt();
+                case 4:
+                    if (newClient2 != null) {
+                        System.out.println("Vous avez actuellement : " + newClient2.getSolde());
+                        System.out.println("Quelle somme voulez-vous retirer ? ");
+                        double montantRetrait = scanner.nextDouble();
+                        scanner.nextLine(); // Pour consommer le retour à la ligne
+                        newClient2.prelevement(montantRetrait);
+                        System.out.println("Retrait effectué avec succès.");
+                    } else {
+                        System.out.println("Aucun compte n'a été créé.");
+                    }
+                    break;
 
-                //Je declare mon constructeur
-                ClassClient newClient = new ClassClient(nom,prenom, adresse, codePostal, ville, solde ) ;
-                System.out.println(nom + "TEST");
-                System.out.println(prenom + "test prenom");
+                case 5:
+                    System.out.println("Choix numéro " + choix);
+                    break;
 
-                break;
-            case 2:
-                //consulterSolde(solde);
-            break;
-            case 3:
-                System.out.println("Vous avez : " + newClient2.solde);
-                System.out.println("Quelle est la somme que vous  voulez deposer ? ");
-                double entree = scanner.nextDouble();
-                newClient2.deposer(entree);
+                case 6:
+                    System.out.println("MODIFIER LES INFORMATIONS DU COMPTE CLIENT :");
 
-            break;
-            case 4:
-                System.out.println("Vous avez : " + newClient2.solde);
+                    if (newClient2 != null) {
+                        System.out.println("Quel est votre nouveau nom ? ");
+                        String nouveauNom = scanner.nextLine();
 
-                System.out.println("Vous voulez retirer quelle somme ?");
-                double retirer = scanner.nextDouble();
-//J'appele ma methode declaré  dans ma class ClassClient
-                newClient2.prelevement(retirer);
+                        System.out.println("Quel est votre nouveau prénom ? ");
+                        String nouveauPrenom = scanner.nextLine();
 
-                break;
-            case 5:
-                System.out.println("Choix numero " + Choix);
-            break;
-            default:
-                System.out.println("ERREUR : CHOIX INVALIDE");
-                break;
+                        System.out.println("Quelle est votre nouvelle adresse ? ");
+                        String nouvelleAdresse = scanner.nextLine();
 
+                        System.out.println("Quel est votre nouveau Code Postal ? ");
+                        int nouveauCodePostal = scanner.nextInt();
+                        scanner.nextLine(); // Pour consommer le retour à la ligne
 
+                        System.out.println("Quelle est votre nouvelle ville ? ");
+                        String nouvelleVille = scanner.nextLine();
 
+                        newClient2.setNom(nouveauNom);
+                        newClient2.setPrenom(nouveauPrenom);
+                        newClient2.setAdresse(nouvelleAdresse);
+                        newClient2.setCodePostal(nouveauCodePostal);
+                        newClient2.setVille(nouvelleVille);
+
+                        System.out.println("Les informations du compte client ont été mises à jour avec succès.");
+                    } else {
+                        System.out.println("Aucun compte n'a été créé.");
+                    }
+                    break;
+
+                case 7:
+                    System.out.println("à la prochaine fois !");
+                    break;
+
+                default:
+                    System.out.println("ERREUR : CHOIX INVALIDE");
+                    break;
+            }
         }
-        }
-
-
     }
 }
