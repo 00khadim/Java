@@ -4,6 +4,8 @@ public class Main {
     public static void main(String[] args) {
         //C'est pour lire l'entrée
         Scanner scanner = new Scanner(System.in);
+        int Choix = 0;
+        while (Choix <1 || Choix > 5){
 
         System.out.println("Chosir l'operation que vous voulait realiser : ");
         System.out.println("1 - Compte bancaire ");
@@ -19,7 +21,8 @@ public class Main {
                 69009, "LYON",
                 1000) ;
         //Je stock ma variable pour le choix de l'user
-        int Choix = scanner.nextInt();
+        Choix = scanner.nextInt();
+
         switch (Choix) {
             case 1:
                 System.out.println("CREATION COMPTE BANCAIRE :");
@@ -47,12 +50,12 @@ public class Main {
 
                 //Je declare mon constructeur
                 ClassClient newClient = new ClassClient(nom,prenom, adresse, codePostal, ville, solde ) ;
-                System.out.println(nom + "TEST nom");
+                System.out.println(nom + "TEST");
                 System.out.println(prenom + "test prenom");
 
                 break;
             case 2:
-                System.out.println("Choix numero " + Choix);
+                //consulterSolde(solde);
             break;
             case 3:
                 System.out.println("Vous avez : " + newClient2.solde);
@@ -60,27 +63,27 @@ public class Main {
                 double entree = scanner.nextDouble();
                 newClient2.deposer(entree);
 
-
             break;
             case 4:
                 System.out.println("Vous avez : " + newClient2.solde);
 
                 System.out.println("Vous voulez retirer quelle somme ?");
                 double retirer = scanner.nextDouble();
-
+//J'appele ma methode declaré  dans ma class ClassClient
                 newClient2.prelevement(retirer);
-
 
                 break;
             case 5:
                 System.out.println("Choix numero " + Choix);
             break;
+            default:
+                System.out.println("ERREUR : CHOIX INVALIDE");
+                break;
 
 
 
         }
-
-
+        }
 
 
     }

@@ -67,12 +67,23 @@ public class ClassClient {
     public double getRetirer() {
         return retirer;
     }
+
+
+    void consulterSolde(double getSolde){
+        System.out.println("Votre solde actuelle est de " + getSolde + "€");
+
+    }
+
+
+
+
     void deposer (double entree){
         double nouveauSolde = this.solde + entree;
         setSolde(nouveauSolde);
         System.out.println("Vous avez deposer " + entree + "€ nouveau solde est de : " + solde + "€");
 
     }
+
     void prelevement(double retirer ){
 
 
