@@ -1,25 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClassClient {
-    public String nom;
-    public String prenom;
-    public String adresse;
-    public int codePostal;
-    public String ville;
-    public double solde;
-    public double retirer;
-    //Je declare mon constructeur
-    public ClassClient(String nom,String prenom, String adresse, int codePostal, String ville, double solde){
+    private String nom;
+    private String prenom;
+    private String adresse;
+    private int codePostal;
+    private String ville;
+    private double solde;
+    private List<Double> historiqueOperations;
+
+    public ClassClient(String nom, String prenom, String adresse, int codePostal, String ville, double solde) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.codePostal = codePostal;
         this.ville = ville;
         this.solde = solde;
-
-
+        this.historiqueOperations = new ArrayList<>();
     }
+
     public String getNom() {
         return nom;
     }
+
     public String getPrenom() {
         return prenom;
     }
@@ -64,44 +68,36 @@ public class ClassClient {
         this.solde = solde;
     }
 
-    public double getRetirer() {
-        return retirer;
+    public void consulterSolde() {
+        System.out.println("Votre solde actuel est de : " + solde + "€");
     }
 
-
-    void consulterSolde(double getSolde){
-        System.out.println("Votre solde actuelle est de " + getSolde + "€");
-
-    }
-
-
-
-
-    void deposer (double entree){
+    public void deposer(double entree) {
         double nouveauSolde = this.solde + entree;
         setSolde(nouveauSolde);
-        System.out.println("Vous avez deposer " + entree + "€ nouveau solde est de : " + solde + "€");
-
+        System.out.println("Vous avez déposé " + entree + "€. Votre nouveau solde est de : " + solde + "€");
+        historiqueOperations.add(entree);
     }
 
-    void prelevement(double retirer ){
-
-
-        if (this.solde >= retirer) {
-            double reste = (this.solde - retirer);
-            setSolde(reste);
-            System.out.println("Votre nouveau solde est de : " + solde + "€");
-
+    public void retirer(double montant) {
+        if (solde >= montant) {
+            double nouveauSolde = solde - montant;
+            setSolde(nouveauSolde);
+            System.out.println("Vous avez retiré " + montant + "€. Votre nouveau solde est de : " + solde + "€");
+            historiqueOperations.add(-montant);
+        } else {
+            System.out.println("Solde insuffisant pour effectuer le retrait.");
         }
-        else {
-            System.out.println("IL vous reste " + solde + "€");
-            System.out.println("Vous êtes en negatif, vous devez nous rembourser : " );
-
-
-
-
-        }
-        }
-
     }
 
+    public void afficherHistoriqueOperations() {
+        System.out.println("Historique des opérations :");
+        for (double operation : historiqueOperations) {
+            if (operation >= 0) {
+                System.out.println("Dépôt : " + operation + "€");
+            } else {
+                System.out.println("Retrait : " + (-operation) + "€");
+            }
+        }
+    }
+}

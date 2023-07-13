@@ -114,7 +114,7 @@ public class Main {
                         newClient2.setCodePostal(nouveauCodePostal);
                         newClient2.setVille(nouvelleVille);
 
-                        System.out.println("Les informations du compte client ont été mises à jour avec succès.");
+                        System.out.println("Les informations du compte client ont été modifié.");
                     } else {
                         System.out.println("Aucun compte n'a été créé.");
                     }
