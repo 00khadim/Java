@@ -85,7 +85,11 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Choix numéro " + choix);
+                    if (newClient2 != null) {
+                        newClient2.afficherHistorique();
+                    } else {
+                        System.out.println("Aucun compte n'a été créé.");
+                    }
                     break;
 
                 case 6:

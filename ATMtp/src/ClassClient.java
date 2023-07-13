@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClassClient {
-    private String nom;
-    private String prenom;
-    private String adresse;
-    private int codePostal;
-    private String ville;
-    private double solde;
-    private List<Double> historiqueOperations;
+    public String nom;
+    public String prenom;
+    public String adresse;
+    public int codePostal;
+    public String ville;
+    public double solde;
+    public List<String> historique;
 
     public ClassClient(String nom, String prenom, String adresse, int codePostal, String ville, double solde) {
         this.nom = nom;
@@ -17,7 +17,7 @@ public class ClassClient {
         this.codePostal = codePostal;
         this.ville = ville;
         this.solde = solde;
-        this.historiqueOperations = new ArrayList<>();
+        this.historique = new ArrayList<>();
     }
 
     public String getNom() {
@@ -68,36 +68,34 @@ public class ClassClient {
         this.solde = solde;
     }
 
-    public void consulterSolde() {
-        System.out.println("Votre solde actuel est de : " + solde + "€");
+    void consulterSolde() {
+        System.out.println("Votre solde actuel est de " + solde + "€");
     }
 
-    public void deposer(double entree) {
+    void deposer(double entree) {
         double nouveauSolde = this.solde + entree;
-        setSolde(nouveauSolde);
-        System.out.println("Vous avez déposé " + entree + "€. Votre nouveau solde est de : " + solde + "€");
-        historiqueOperations.add(entree);
+        this.solde = nouveauSolde;
+        String operation = "Dépôt de " + entree + "€. Nouveau solde : " + solde + "€";
+        historique.add(operation);
+        System.out.println(operation);
     }
 
-    public void retirer(double montant) {
-        if (solde >= montant) {
-            double nouveauSolde = solde - montant;
-            setSolde(nouveauSolde);
-            System.out.println("Vous avez retiré " + montant + "€. Votre nouveau solde est de : " + solde + "€");
-            historiqueOperations.add(-montant);
+    void prelevement(double retirer) {
+        if (this.solde >= retirer) {
+            double nouveauSolde = this.solde - retirer;
+            this.solde = nouveauSolde;
+            String operation = "Retrait de " + retirer + "€. Nouveau solde : " + solde + "€";
+            historique.add(operation);
+            System.out.println(operation);
         } else {
-            System.out.println("Solde insuffisant pour effectuer le retrait.");
+            System.out.println("Fonds insuffisants. Vous ne pouvez pas retirer cette somme.");
         }
     }
 
-    public void afficherHistoriqueOperations() {
+    void afficherHistorique() {
         System.out.println("Historique des opérations :");
-        for (double operation : historiqueOperations) {
-            if (operation >= 0) {
-                System.out.println("Dépôt : " + operation + "€");
-            } else {
-                System.out.println("Retrait : " + (-operation) + "€");
-            }
+        for (String operation : historique) {
+            System.out.println(operation);
         }
     }
 }
